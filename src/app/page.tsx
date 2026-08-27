@@ -7,22 +7,23 @@ import Nav from "@/components/Nav";
 import Preloader from "@/components/Preloader";
 import Videos from "@/components/Videos";
 import Work from "@/components/Work";
-import Cursor from "@/components/ui/Cursor";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import { getShorts } from "@/lib/youtube";
 
-export default function Home() {
+export default async function Home() {
+  const shorts = await getShorts(9);
+
   return (
     <>
       <Preloader />
       <SmoothScroll />
-      <Cursor />
       <Nav />
 
       <main>
         <Hero />
         <About />
         <Mission />
-        <Work />
+        <Work shorts={shorts} />
         <Videos />
         <Contact />
       </main>

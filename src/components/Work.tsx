@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import type { VideosPayload } from "@/lib/youtube";
 import { Reveal } from "./ui/Reveal";
 import TruthPanel from "./TruthPanel";
 import BooksPanel from "./BooksPanel";
@@ -15,7 +16,7 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]["id"];
 
-export default function Work() {
+export default function Work({ shorts }: { shorts: VideosPayload }) {
   const [tab, setTab] = useState<TabId>("truth");
 
   return (
@@ -84,7 +85,7 @@ export default function Work() {
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.55, ease: EASE }}
           >
-            {tab === "truth" ? <TruthPanel /> : <BooksPanel />}
+            {tab === "truth" ? <TruthPanel shorts={shorts} /> : <BooksPanel />}
           </motion.div>
         </AnimatePresence>
       </div>

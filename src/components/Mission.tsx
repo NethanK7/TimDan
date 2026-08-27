@@ -89,7 +89,6 @@ export default function Mission() {
             return (
               <StaggerItem key={m.name}>
                 <article
-                  data-cursor
                   className={`group relative flex h-full flex-col overflow-hidden rounded-sm border border-line bg-surface/40 p-8 transition-colors duration-500 ${a.ring}`}
                 >
                   <div

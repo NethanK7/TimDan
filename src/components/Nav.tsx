@@ -1,18 +1,24 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/content";
 import Magnetic from "./ui/Magnetic";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Nav() {
-  const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (y) => setSolid(y > 60));
+  useEffect(() => {
+    // Lenis drives scroll itself; Motion's useScroll() can miss the resulting
+    // native scroll events, so this listens directly instead.
+    const onScroll = () => setSolid(window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>

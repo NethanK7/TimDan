@@ -140,39 +140,8 @@ export const truth = {
     { label: "TikTok", href: "https://tiktok.com/" },
     { label: "YouTube", href: "https://youtube.com/" },
   ],
-  // TODO: replace with real drop copy — these are written in Timothy's stated themes
-  drops: [
-    {
-      topic: "Identity",
-      title: "You are not your worst week.",
-      body: "Shame wants to name you. God already did — before the failure, before the applause, before you had anything to prove.",
-    },
-    {
-      topic: "Purpose",
-      title: "Calling is carried, not chased.",
-      body: "Purpose is not a destination you hunt down. It is a weight you learn to carry faithfully in the room you are already standing in.",
-    },
-    {
-      topic: "Mental Health",
-      title: "Honest is holy.",
-      body: "Pretending is not spiritual maturity. The Psalms are full of people who told God the truth about how bad it hurt.",
-    },
-    {
-      topic: "Holiness",
-      title: "Holiness is not a cage.",
-      body: "It is not God withholding joy from you. It is God protecting the version of you He is still building.",
-    },
-    {
-      topic: "Relationships",
-      title: "Choose slow.",
-      body: "Everything real in your life will be built at a pace that the internet will call boring.",
-    },
-    {
-      topic: "Healing",
-      title: "You can be free and still be tender.",
-      body: "Healing does not mean the memory stops mattering. It means the memory stops driving.",
-    },
-  ],
+  // The drops grid itself is pulled live from YouTube (src/lib/youtube.ts,
+  // getShorts) — anything under 3 minutes on the connected channel. See README.
   themes: [
     "Identity",
     "Purpose",

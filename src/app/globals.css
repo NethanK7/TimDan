@@ -157,12 +157,6 @@ body {
 }
 .pulse-ring { animation: pulse-ring 2.6s var(--ease-out-expo) infinite; }
 
-/* pointer-driven flourishes have no meaning on touch */
-.fine-only { display: none; }
-@media (pointer: fine) {
-  .fine-only { display: block; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

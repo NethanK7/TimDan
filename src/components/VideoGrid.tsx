@@ -121,7 +121,6 @@ export default function VideoGrid({
             <button
               onClick={() => setActive(v)}
               className="group block w-full text-left"
-              data-cursor
             >
               <Thumb video={v} />
               <h4 className="mt-4 line-clamp-2 text-[0.98rem] leading-snug text-bone transition-colors duration-300 group-hover:text-gold">

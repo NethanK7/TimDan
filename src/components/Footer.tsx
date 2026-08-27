@@ -58,12 +58,19 @@ export default function Footer() {
           </p>
           <p>{site.location}</p>
         </div>
+      </div>
 
-        {/* oversized wordmark bleeding off the base of the page */}
-        <p
-          aria-hidden
-          className="font-display pointer-events-none select-none whitespace-nowrap text-center text-[19vw] leading-[0.78] tracking-tight text-bone/[0.045] translate-y-[16%]"
-        >
+      {/* oversized wordmark, faded rather than hard-clipped at the page edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none select-none overflow-hidden pt-6 pb-2"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent, black 35%, black 75%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 35%, black 75%, transparent)",
+        }}
+      >
+        <p className="font-display whitespace-nowrap text-center text-[19vw] leading-[0.82] tracking-tight text-bone/[0.07]">
           Timothy Daniel
         </p>
       </div>
