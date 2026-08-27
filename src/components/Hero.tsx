@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRef } from "react";
-import { hero, roles } from "@/lib/content";
+import { hero } from "@/lib/content";
 import Magnetic from "./ui/Magnetic";
 
 // WebGL has no server render — load it after hydration so first paint stays instant
@@ -117,9 +117,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: base, ease: EASE }}
-          className="eyebrow mb-7 max-w-md leading-relaxed"
+          className="eyebrow mb-7 max-w-xl leading-relaxed"
         >
-          {hero.kicker}
+          {hero.kicker.replace(" House,", "\u00a0House,")}
         </motion.p>
 
         <h1 className="display-xl mb-8 max-w-[16ch]">
@@ -177,7 +177,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: base + 0.85 }}
         className="relative z-20 border-t border-line/60"
       >
-        <div className="mx-auto grid max-w-[1400px] grid-cols-3 gap-4 px-5 py-5 sm:flex sm:items-center sm:gap-x-10 sm:px-8">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-3 gap-4 px-5 py-5 sm:flex sm:items-center sm:gap-x-12 sm:px-8">
           {hero.stats.map((s) => (
             <div key={s.label} className="flex shrink-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2.5">
               <span className="font-display text-xl leading-none text-bone sm:text-2xl">{s.value}</span>
@@ -187,19 +187,10 @@ export default function Hero() {
             </div>
           ))}
 
-          <div className="ml-auto hidden items-center text-[0.7rem] uppercase tracking-[0.22em] text-muted lg:flex">
-            {roles.slice(0, 4).map((r, i) => (
-              <span key={r} className="flex items-center">
-                {i > 0 && <span className="mx-3 text-line">/</span>}
-                {r}
-              </span>
-            ))}
-          </div>
-
           <motion.div
             animate={{ y: [0, 7, 0] }}
             transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className="ml-auto hidden shrink-0 items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-muted sm:flex lg:ml-8"
+            className="ml-auto hidden shrink-0 items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-muted sm:flex"
           >
             Scroll
             <svg width="10" height="14" viewBox="0 0 10 14" aria-hidden>
