@@ -3,8 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import type { Video, VideosPayload } from "@/lib/youtube";
-import { truth } from "@/lib/content";
+import type { Video } from "@/lib/youtube";
 import { Stagger, StaggerItem } from "./ui/Reveal";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -59,7 +58,18 @@ function DropCard({
   );
 }
 
-export default function TruthPanel({ shorts }: { shorts: VideosPayload }) {
+/** Grid of short-form drops + a shared lightbox. Used on both the home teaser and the full /truth page. */
+export default function TruthGrid({
+  videos,
+  configured,
+  error,
+  columns = "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5",
+}: {
+  videos: Video[];
+  configured: boolean;
+  error?: string;
+  columns?: string;
+}) {
   const [active, setActive] = useState<Video | null>(null);
   const close = useCallback(() => setActive(null), []);
 
@@ -78,72 +88,25 @@ export default function TruthPanel({ shorts }: { shorts: VideosPayload }) {
 
   return (
     <div>
-      <div className="mb-14 grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <h3 className="h-section mb-6 max-w-[13ch]">
-            Short messages. <span className="text-gold-soft">Long shadows.</span>
-          </h3>
-          <p className="lede max-w-[54ch]">{truth.body}</p>
-        </div>
-
-        <div className="flex flex-col justify-end gap-5 lg:col-span-5 lg:items-end">
-          <p className="font-display text-2xl text-dim">{truth.handle}</p>
-          <div className="flex flex-wrap gap-2.5">
-            {truth.socials.map((s) => (
-              <div key={s.label}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm text-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
-                >
-                  {s.label}
-                  <svg width="9" height="9" viewBox="0 0 9 9" aria-hidden className="opacity-60">
-                    <path d="M1 8 L8 1 M2.6 1 H8 V6.4" stroke="currentColor" fill="none" />
-                  </svg>
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* theme chips */}
-      <div className="mb-12 flex flex-wrap gap-2">
-        {truth.themes.map((t, i) => (
-          <motion.span
-            key={t}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.045, duration: 0.6, ease: EASE }}
-            className="rounded-full border border-line bg-raise/50 px-4 py-1.5 text-[0.78rem] text-dim"
-          >
-            {t}
-          </motion.span>
-        ))}
-      </div>
-
-      {/* the drops — short-form videos pulled live from YouTube */}
-      {shorts.videos.length > 0 ? (
-        <Stagger className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {shorts.videos.map((v, i) => (
+      {videos.length > 0 ? (
+        <Stagger className={`grid gap-4 ${columns}`}>
+          {videos.map((v, i) => (
             <DropCard key={v.id} video={v} index={i} onOpen={setActive} />
           ))}
         </Stagger>
       ) : (
         <div className="rounded-lg border border-dashed border-line bg-raise/30 px-8 py-14 text-center">
           <p className="font-display text-xl text-bone">
-            {shorts.configured ? "No drops came back yet" : "Connect the Tim Drops Truth channel"}
+            {configured ? "No drops came back yet" : "Connect the Tim Drops Truth channel"}
           </p>
           <p className="mx-auto mt-3 max-w-[52ch] text-sm leading-relaxed text-dim">
-            {shorts.configured
+            {configured
               ? "The channel is connected — short-form uploads under 3 minutes will appear here automatically."
               : "Set YOUTUBE_API_KEY and YOUTUBE_CHANNEL_ID (or YOUTUBE_TRUTH_CHANNEL_ID for a separate channel) and the latest drops will populate this grid automatically."}
           </p>
-          {shorts.error && (
+          {error && (
             <p className="mx-auto mt-5 max-w-[60ch] rounded-lg border border-line bg-ink px-4 py-3 font-mono text-[0.72rem] text-muted">
-              {shorts.error}
+              {error}
             </p>
           )}
         </div>

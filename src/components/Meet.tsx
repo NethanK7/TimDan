@@ -3,10 +3,10 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
-import { welcome } from "@/lib/content";
+import { family, meet } from "@/lib/content";
 import { Reveal } from "./ui/Reveal";
 
-export default function Welcome() {
+export default function Meet() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,8 +17,7 @@ export default function Welcome() {
   return (
     <section id="about" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-[1180px] px-6 sm:px-10">
-        <div ref={ref} className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
-          {/* the collage says "many callings" better than a paragraph can */}
+        <div ref={ref} className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Reveal>
               <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-line">
@@ -34,19 +33,35 @@ export default function Welcome() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
               </div>
             </Reveal>
+
+            {/* home life, folded in as a quiet supporting note rather than its own section */}
+            <Reveal delay={0.1}>
+              <div className="mt-4 flex items-center gap-4 rounded-lg border border-line bg-raise/40 p-4">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded">
+                  <Image
+                    src="/images/family.jpg"
+                    alt={family.caption}
+                    fill
+                    sizes="64px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <p className="text-sm leading-relaxed text-dim">{meet.familyNote}</p>
+              </div>
+            </Reveal>
           </div>
 
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow mb-6">{welcome.eyebrow}</p>
+              <p className="eyebrow mb-6">{meet.eyebrow}</p>
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 className="h-section mb-8">{welcome.heading}</h2>
+              <h2 className="h-section mb-8">{meet.heading}</h2>
             </Reveal>
 
             <div className="space-y-6">
-              {welcome.body.map((para, i) => (
+              {meet.body.map((para, i) => (
                 <Reveal key={i} delay={0.1 + i * 0.06}>
                   <p className={i === 0 ? "lede" : "body-copy"}>{para}</p>
                 </Reveal>
@@ -54,29 +69,13 @@ export default function Welcome() {
             </div>
 
             <Reveal delay={0.24}>
-              <ul className="mt-10 flex flex-wrap gap-2">
-                {welcome.roles.map((r) => (
-                  <li
-                    key={r}
-                    className="rounded-full border border-line px-4 py-1.5 text-[0.78rem] text-dim"
-                  >
-                    {r}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal delay={0.3}>
-              <div className="mt-12 grid grid-cols-3 gap-6 border-t border-line pt-8">
-                {welcome.stats.map((s) => (
-                  <div key={s.label}>
-                    <p className="font-display text-2xl text-bone sm:text-3xl">{s.value}</p>
-                    <p className="mt-1.5 text-[0.7rem] uppercase leading-tight tracking-[0.14em] text-muted">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <a
+                href={meet.cta.href}
+                className="mt-10 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-fire-soft transition-colors hover:text-fire"
+              >
+                {meet.cta.label}
+                <span aria-hidden>&rarr;</span>
+              </a>
             </Reveal>
           </div>
         </div>

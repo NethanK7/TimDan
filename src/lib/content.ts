@@ -8,130 +8,126 @@
 
 export const site = {
   name: "Timothy Daniel",
-  role: "Pastor · Author · Humanitarian",
-  tagline: "Reveal the Father. Awaken purpose. Restore what was broken.",
+  role: "Pastor · Humanitarian · Author · Creative",
+  slogan: "Carrying Fire. Speaking Truth. Serving People.",
+  tagline: "Equipping a generation, restoring lives, and demonstrating the love of Jesus.",
   location: "Colombo, Sri Lanka",
   // TODO: replace with the real domain once the client points DNS at Vercel
   url: "https://pastortimothydaniel.com",
   email: "hello@pastortimothydaniel.com", // TODO
   description:
-    "Pastor Timothy Daniel is a preacher, humanitarian, author, counsellor and creative communicator helping people discover identity, experience inner healing and fulfil their God-given purpose.",
+    "Pastor Timothy Daniel is a preacher, humanitarian, author and creative communicator carrying fire, speaking truth, and serving people across Sri Lanka and beyond.",
 };
 
 export const nav = [
+  { label: "Home", href: "/" },
   { label: "About", href: "#about" },
-  { label: "Ministries", href: "#ministries" },
-  { label: "The Work", href: "#work" },
-  { label: "Listen", href: "#listen" },
-  { label: "Connect", href: "#connect" },
+  { label: "Messages", href: "#messages" },
+  { label: "Outreach", href: "#outreach" },
+  { label: "Books & Music", href: "/books" },
+  { label: "Contact", href: "#contact" },
 ];
 
+export const navCta = { label: "Partner with the mission", href: "#contact" };
+
+/* ── HERO ─────────────────────────────────────────────────── */
+
 export const hero = {
-  kicker: "Colombo, Sri Lanka",
-  title: "Revealing the heart of the Father.",
-  sub: "Pastor, humanitarian and author helping a generation discover who they are, find healing, and walk in the purpose God gave them.",
-  primaryCta: { label: "Invite Timothy to speak", href: "#connect" },
-  secondaryCta: { label: "Watch a message", href: "#watch" },
+  kicker: "Pastor · Humanitarian · Author · Creative",
+  lines: ["Carrying fire.", "Speaking truth.", "Serving people."],
+  sub: "Equipping a generation, restoring lives, and demonstrating the love of Jesus — in word and deed.",
+  primaryCta: { label: "Watch the latest message", href: "#messages" },
+  secondaryCta: { label: "Discover my story", href: "#about" },
 };
 
-export const welcome = {
-  eyebrow: "Hello there",
-  heading: "One man. Many callings.",
+/* ── ABOUT · MEET TIMOTHY ─────────────────────────────────── */
+
+export const meet = {
+  eyebrow: "Meet Timothy",
+  heading: "One calling, carried in every room.",
   body: [
-    "I'm Timothy — a preacher, humanitarian, author and counsellor based in Colombo. I serve as the Youth and Young Adults Pastor at The Father's House Church, where I also oversee our Children's and Media ministries.",
-    "Most weeks look like this: preaching on a Sunday, sitting with a young person who is struggling on a Monday, loading a van for a village outreach midweek, and writing late at night. Different rooms, one mission.",
+    "Pastor Timothy Daniel is a preacher, humanitarian, author and creative communicator passionate about helping people discover their identity, encounter the heart of God, and fulfil their God-given purpose.",
+    "From preaching and mentoring young people to serving vulnerable communities across Sri Lanka, his calling is expressed through one mission: to carry God's presence, communicate His truth, and make His love visible.",
   ],
-  roles: [
-    "Preacher",
-    "Humanitarian",
-    "Author",
-    "Counsellor",
-    "Podcast host",
-    "Creative communicator",
-  ],
-  stats: [
-    { value: "1000s", label: "Lives reached" },
-    { value: "3", label: "Organisations led" },
-    { value: "20+", label: "Communities served" },
-  ],
+  familyNote:
+    "He lives in Colombo with his wife, Viji, and their children — the same conviction that shapes his ministry shapes his home: serving God, strengthening family, and living the Gospel in word and deed.",
+  cta: { label: "Read my story", href: "#calling" },
 };
 
 export const family = {
-  eyebrow: "Home",
-  heading: "Ministry begins at the kitchen table.",
-  body: "Timothy lives in Colombo with his wife, Viji, and their children. Viji serves alongside him in every part of the work — from village outreaches to the quiet, unglamorous hours that hold a ministry together. Together they remain committed to serving God, strengthening families, and demonstrating the love of Jesus in both word and deed.",
   caption: "Timothy & Viji",
 };
 
-export const mission = {
-  eyebrow: "The Mission",
-  heading: "What the work is really for.",
-  pillars: [
+/* ── ONE CALLING. MANY EXPRESSIONS. ──────────────────────────── */
+
+export const calling = {
+  eyebrow: "One calling",
+  heading: "One calling. Many expressions.",
+  cards: [
     {
-      title: "Reveal the heart of the Father",
-      body: "Preaching that moves past religion and introduces people to a Father who is not distant, disappointed, or done with them.",
+      no: "01",
+      title: "Preach",
+      body: "Communicating biblical truth with depth, clarity and relevance.",
     },
     {
-      title: "Awaken purpose",
-      body: "Helping young people trade borrowed identity for God-given calling — clarity about who they are before what they do.",
+      no: "02",
+      title: "Equip",
+      body: "Raising confident, discerning and Spirit-filled young leaders.",
     },
     {
-      title: "Restore broken lives",
-      body: "Counselling and teaching around inner healing, mental health, emotional wholeness, holiness, and relationships.",
+      no: "03",
+      title: "Serve",
+      body: "Bringing practical help and lasting hope to vulnerable communities.",
     },
     {
-      title: "Prepare a generation",
-      body: "Raising leaders who carry the presence of God into schools, estates, villages, and every space they walk into.",
+      no: "04",
+      title: "Create",
+      body: "Sharing truth through books, music, podcasts and digital content.",
     },
   ],
 };
 
-export const ministries = [
+/** Where the "Preach / Equip / Serve" expressions are actually lived out. */
+export const organisations = [
   {
     name: "The Father's House Church",
     role: "Youth & Young Adults Pastor",
     blurb:
       "Leading the youth and young adults ministry in Colombo, while overseeing the Children's Ministry and the Media Ministry.",
-    tags: ["Youth", "Children", "Media"],
   },
   {
     name: "Kingdom Kidz",
     role: "Founder & CEO",
     blurb:
       "Creating resources, programmes, and experiences that make biblical truth accessible, memorable, and joyful for children.",
-    tags: ["Children", "Resources", "Discipleship"],
   },
   {
     name: "Word & Deed Lanka",
     role: "Chief Executive Officer",
     blurb:
-      "A humanitarian organisation serving vulnerable children, families, and underserved communities across Sri Lanka — alongside his wife Viji and a dedicated team of volunteers.",
-    tags: ["Relief", "Outreach", "Training"],
+      "A humanitarian organisation serving vulnerable children, families, and underserved communities across Sri Lanka.",
   },
 ];
 
-export const impact = {
-  eyebrow: "Word & Deed Lanka",
-  heading: "Compassion, courage, action.",
-  body: "Humanitarian relief, children's programmes, school ministry, leadership training, and community outreach across rural villages, tea estates, juvenile homes, and disaster-affected communities. Through these initiatives, thousands of children and adults have received practical support, hope, and the message of Jesus Christ.",
-  areas: [
-    "Rural villages",
-    "Tea estates",
-    "Juvenile homes",
-    "Disaster-affected communities",
-    "Schools",
-    "Underserved families",
-  ],
+/* ── FEATURED MESSAGE / MESSAGES LIBRARY ─────────────────────── */
+
+export const messages = {
+  eyebrow: "Messages",
+  heading: "Truth for real life.",
+  body: "Messages that go beyond inspiration — helping you grow deeper, heal inwardly, and live with purpose.",
+  categories: ["Identity & Purpose", "Inner Healing", "Holiness & God's Presence"],
 };
 
-/* ── TAB 1 · TIM DROPS TRUTH ──────────────────────────────── */
+/* ── TIM DROPS TRUTH ──────────────────────────────────────── */
 
 export const truth = {
   name: "Tim Drops Truth",
-  eyebrow: "Digital Platform",
-  heading: "Short messages. Long shadows.",
-  body: "A digital platform delivering short, culturally relevant, and deeply reflective messages for youth and young adults — truth that meets you where the scroll happens.",
-  // TODO: swap in real @handles
+  eyebrow: "60 seconds. Timeless truth.",
+  heading: "Tim Drops Truth",
+  body: "Tim Drops Truth brings biblical revelation into the real conversations facing today's generation — identity, relationships, mental health, holiness, purpose and culture.",
+  kicker: "No filters. No empty hype. Just truth that challenges, heals and transforms.",
+  cta: { label: "Watch Tim Drops Truth", href: "/truth" },
+  // TODO: swap in real @handles once confirmed
   handle: "@timdropstruth",
   socials: [
     { label: "Instagram", href: "https://instagram.com/" },
@@ -151,7 +147,27 @@ export const truth = {
   ],
 };
 
-/* ── TAB 2 · BOOKS ────────────────────────────────────────── */
+export const wordAndDeedUrl = "https://worddeedlanka.org"; // TODO: confirm real URL
+
+/* ── HUMANITARIAN IMPACT · WORD & DEED LANKA ─────────────────── */
+
+export const impact = {
+  eyebrow: "Word & Deed Lanka",
+  heading: "Love must become visible.",
+  body: "Through Word & Deed Lanka, Timothy and a committed team serve children, families and underserved communities across Sri Lanka — bringing practical assistance, spiritual hope and opportunities for lasting transformation.",
+  kicker: "Because the Gospel must be heard through our words and experienced through our actions.",
+  primaryCta: { label: "Explore our impact", href: wordAndDeedUrl, external: true },
+  secondaryCta: { label: "Partner with us", href: "#contact" },
+  // TODO: update these figures as the ministry's reach grows
+  counters: [
+    { value: "3,000+", label: "Children reached" },
+    { value: "9", label: "Regions served across Sri Lanka" },
+    { value: "21", label: "Committed volunteers" },
+    { value: "1", label: "Mission: hope in word and deed" },
+  ],
+};
+
+/* ── BOOKS ────────────────────────────────────────────────── */
 
 export type Book = {
   title: string;
@@ -160,57 +176,93 @@ export type Book = {
   year: string;
   blurb: string;
   status: "available" | "coming-soon";
+  featured?: boolean;
   link?: string;
   spine: string; // cover gradient
 };
 
-// TODO: replace titles, blurbs, years and purchase links with the real catalogue
+// TODO: confirm release years and purchase links once titles go live
 export const books: Book[] = [
   {
-    title: "Title To Be Confirmed",
-    subtitle: "A book for children",
-    audience: "Children",
-    year: "—",
-    blurb:
-      "A storytelling resource that makes biblical truth accessible, vivid, and memorable for young readers.",
-    status: "coming-soon",
-    spine: "linear-gradient(150deg,#E0A75E,#B8813C 58%,#6B4A1E)",
-  },
-  {
-    title: "Title To Be Confirmed",
-    subtitle: "A book for youth & young adults",
+    title: "Built to Carry Fire",
+    subtitle: "You were built to carry fire.",
     audience: "Youth",
     year: "—",
     blurb:
-      "Practical, thought-provoking teaching on identity, purpose, and the questions this generation is actually asking.",
+      "A call to awaken faith, deepen spiritual understanding, and carry what God has placed within you — without apology.",
     status: "coming-soon",
-    spine: "linear-gradient(150deg,#D8763C,#8E3F1C 60%,#40190B)",
+    featured: true,
+    spine: "linear-gradient(150deg,#F0824E,#E2572B 55%,#7A2410)",
   },
   {
-    title: "Title To Be Confirmed",
+    title: "Grasshopper or Grapetaster Mentality",
+    subtitle: "A book on identity and perspective",
+    audience: "Youth",
+    year: "—",
+    blurb:
+      "On seeing yourself the way God sees you — trading a grasshopper mentality for the courage to taste the grapes of the promise.",
+    status: "coming-soon",
+    spine: "linear-gradient(150deg,#C99A4E,#8A6530 58%,#3D2C14)",
+  },
+  {
+    title: "Courage Over Fear",
     subtitle: "A book for adults",
     audience: "Adults",
     year: "—",
     blurb:
-      "On inner healing, emotional wholeness, and a faith that moves beyond words into compassion and action.",
+      "On facing what frightens you with a faith that is bigger — practical courage for anxiety, doubt, and the unknown.",
     status: "coming-soon",
-    spine: "linear-gradient(150deg,#7F93AE,#3C4A5E 58%,#1A212C)",
+    spine: "linear-gradient(150deg,#7F8B93,#3C464C 58%,#1A1F22)",
+  },
+  {
+    title: "Kingdom Kidz Storybooks",
+    subtitle: "Teaching resources for children",
+    audience: "Children",
+    year: "—",
+    blurb:
+      "Storytelling and discipleship resources created through Kingdom Kidz — biblical truth made vivid and memorable for young readers.",
+    status: "coming-soon",
+    spine: "linear-gradient(150deg,#E0BC7E,#C99A4E 58%,#6B4A1E)",
   },
 ];
 
 export const booksIntro = {
-  eyebrow: "Published Work",
-  heading: "Truth you can hold.",
-  body: "As an author and storyteller, Timothy creates resources that make biblical truth accessible to both children and adults — books built to be read aloud, marked up, and passed on.",
+  eyebrow: "Books & Resources",
+  heading: "You were built to carry fire.",
+  body: "Discover books, devotionals and discipleship resources created to awaken faith, deepen spiritual understanding, and equip you to carry what God has placed within you.",
+  cta: { label: "Explore the books", href: "/books" },
 };
 
-/* ── PODCAST ──────────────────────────────────────────────── */
+/* ── HOME · LATEST RELEASES ───────────────────────────────── */
+
+export const latest = {
+  eyebrow: "Latest",
+  heading: "Fresh off the desk.",
+  body: "A running log of what's new — the newest drop from Tim Drops Truth and the latest title in print.",
+};
+
+/* ── MUSIC & PODCAST ──────────────────────────────────────── */
+
+export const music = {
+  name: "TIMDAN",
+  eyebrow: "Original Worship Music",
+  tagline: "Songs to lead you into His presence.",
+  body: "Songs created to lead people into reflection, worship and the presence of God.",
+  cta: { label: "Listen to the music", href: "#" }, // TODO: real streaming links
+  // TODO: real streaming links
+  links: [
+    { label: "Spotify", href: "https://spotify.com/" },
+    { label: "Apple Music", href: "https://music.apple.com/" },
+    { label: "YouTube", href: "https://youtube.com/" },
+  ],
+};
 
 export const podcast = {
   name: "The Altar Talk",
   eyebrow: "Podcast",
   tagline: "Where real life meets God's truth.",
   body: "Unhurried conversations about the things people actually wrestle with — doubt, healing, calling, relationships, and the slow work of becoming whole.",
+  cta: { label: "Hear the podcast", href: "#" },
   // TODO: real podcast links
   links: [
     { label: "Spotify", href: "https://spotify.com/" },
@@ -219,11 +271,25 @@ export const podcast = {
   ],
 };
 
+/* ── FINAL CALL TO ACTION ─────────────────────────────────── */
+
+export const finalCta = {
+  eyebrow: "Join the mission",
+  heading: "Let's carry the fire together.",
+  body: "Invite Pastor Timothy to speak, partner with the humanitarian mission, access life-changing resources, or connect with the growing online community.",
+  kicker: "The next life transformed could begin with your yes.",
+  ctas: [
+    { label: "Invite Timothy", href: "#contact" },
+    { label: "Become a partner", href: "#contact" },
+    { label: "Get in touch", href: "#contact" },
+  ],
+};
+
 /* ── CONTACT ──────────────────────────────────────────────── */
 
 export const contact = {
-  eyebrow: "Connect",
-  heading: "Invite Timothy to speak.",
+  eyebrow: "Contact",
+  heading: "Let's carry the fire together.",
   body: "For preaching invitations, conferences, youth events, school programmes, counselling enquiries, media, or partnership with Word & Deed Lanka.",
   reasons: [
     "Speaking / preaching invitation",
@@ -235,9 +301,11 @@ export const contact = {
   ],
 };
 
+/* ── SOCIAL / FOOTER ──────────────────────────────────────── */
+
 export const socials = [
-  { label: "Instagram", href: "https://instagram.com/" }, // TODO
-  { label: "YouTube", href: "https://youtube.com/" }, // TODO
-  { label: "Facebook", href: "https://facebook.com/" }, // TODO
-  { label: "Spotify", href: "https://spotify.com/" }, // TODO
+  { label: "YouTube", handle: "@PsTimDan", href: "https://youtube.com/@PsTimDan" },
+  { label: "Instagram", handle: "@tim_daniel85", href: "https://instagram.com/tim_daniel85" },
+  { label: "TikTok", handle: "@tim.daniel85", href: "https://tiktok.com/@tim.daniel85" },
 ];
+

@@ -1,36 +1,27 @@
+import BooksTeaser from "@/components/BooksTeaser";
+import Calling from "@/components/Calling";
 import Contact from "@/components/Contact";
-import Family from "@/components/Family";
-import Footer from "@/components/Footer";
+import FinalCta from "@/components/FinalCta";
 import Hero from "@/components/Hero";
-import Ministries from "@/components/Ministries";
-import Nav from "@/components/Nav";
-import Podcast from "@/components/Podcast";
-import Videos from "@/components/Videos";
-import Welcome from "@/components/Welcome";
-import Work from "@/components/Work";
-import SmoothScroll from "@/components/ui/SmoothScroll";
-import { getShorts } from "@/lib/youtube";
+import Impact from "@/components/Impact";
+import Meet from "@/components/Meet";
+import Messages from "@/components/Messages";
+import MusicPodcast from "@/components/MusicPodcast";
+import TruthTeaser from "@/components/TruthTeaser";
 
-export default async function Home() {
-  const shorts = await getShorts(9);
-
+export default function Home() {
   return (
-    <>
-      <SmoothScroll />
-      <Nav />
-
-      <main>
-        <Hero />
-        <Welcome />
-        <Ministries />
-        <Work shorts={shorts} />
-        <Podcast />
-        <Videos />
-        <Family />
-        <Contact />
-      </main>
-
-      <Footer />
-    </>
+    <main>
+      <Hero />
+      <Meet />
+      <Calling />
+      <Messages />
+      <TruthTeaser />
+      <Impact />
+      <BooksTeaser />
+      <MusicPodcast />
+      <FinalCta />
+      <Contact />
+    </main>
   );
 }

@@ -46,4 +46,5 @@ next-env.d.ts
 # visual QA
 /shots
 shot.mjs
+qa*.mjs
 .DS_Store

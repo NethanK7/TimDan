@@ -1,17 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { League_Spartan, Manrope } from "next/font/google";
 import { site } from "@/lib/content";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/ui/SmoothScroll";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const heading = League_Spartan({
+  variable: "--font-heading",
   subsets: ["latin"],
-  axes: ["SOFT"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const body = Manrope({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
@@ -19,7 +22,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: `${site.name} — ${site.slogan}`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -41,13 +44,13 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} — ${site.slogan}`,
     description: site.description,
     images: [{ url: "/images/timothy.jpg", width: 1024, height: 1536, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} — ${site.slogan}`,
     description: site.description,
     images: ["/images/timothy.jpg"],
   },
@@ -55,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0A0C",
+  themeColor: "#0E0D0C",
   colorScheme: "dark",
 };
 
@@ -85,13 +88,16 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="antialiased">
+    <html lang="en" className={`${heading.variable} ${body.variable}`}>
+      <body className="grain antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <SmoothScroll />
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

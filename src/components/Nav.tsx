@@ -1,14 +1,22 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav, site } from "@/lib/content";
+import { nav, navCta, site } from "@/lib/content";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Nav() {
+  const pathname = usePathname();
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Section anchors only exist on the homepage — from any other route, send
+  // them home first so the browser lands on the right spot after navigating.
+  const resolveHref = (href: string) =>
+    href.startsWith("#") && pathname !== "/" ? `/${href}` : href;
 
   useEffect(() => {
     // Lenis drives scroll itself, so this listens to the window directly
@@ -34,30 +42,30 @@ export default function Nav() {
         }`}
       >
         <nav className="mx-auto flex h-[var(--nav-h)] max-w-[1180px] items-center justify-between px-6 sm:px-10">
-          <a href="#top" className="font-display text-lg tracking-tight" aria-label="Home">
+          <Link href="/" className="font-display text-lg tracking-tight" aria-label="Home">
             Timothy <span className="text-muted">Daniel</span>
-          </a>
+          </Link>
 
-          <ul className="hidden items-center gap-9 md:flex">
+          <ul className="hidden items-center gap-8 md:flex">
             {nav.map((n) => (
               <li key={n.href}>
-                <a
-                  href={n.href}
+                <Link
+                  href={resolveHref(n.href)}
                   className="text-sm text-dim transition-colors duration-300 hover:text-bone"
                 >
                   {n.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
           <div className="flex items-center gap-4">
-            <a
-              href="#connect"
-              className="hidden rounded-full border border-line px-5 py-2.5 text-sm text-bone transition-colors duration-300 hover:border-gold/50 hover:text-gold sm:block"
+            <Link
+              href={resolveHref(navCta.href)}
+              className="hidden rounded-full bg-fire px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-fire-soft sm:block"
             >
-              Get in touch
-            </a>
+              {navCta.label}
+            </Link>
 
             <button
               onClick={() => setOpen((v) => !v)}
@@ -95,13 +103,13 @@ export default function Nav() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.06, duration: 0.6, ease: EASE }}
                 >
-                  <a
-                    href={n.href}
+                  <Link
+                    href={resolveHref(n.href)}
                     onClick={() => setOpen(false)}
                     className="h-section block py-2.5"
                   >
                     {n.label}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>

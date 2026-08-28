@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm near-black rather than pure black — softer, less clinical */
-  --color-ink: #0B0A0C;
-  --color-raise: #131217;
-  --color-raise-2: #1B1A21;
-  --color-line: #26242E;
-  --color-line-soft: #1C1B22;
+  /* Charcoal black, warm ivory, fire-orange, muted gold */
+  --color-ink: #0E0D0C;
+  --color-raise: #171513;
+  --color-raise-2: #201D1A;
+  --color-line: #2E2A26;
+  --color-line-soft: #211E1B;
 
-  --color-bone: #F4F1EC;
-  --color-dim: #A5A0A8;
-  --color-muted: #6D6874;
+  --color-bone: #F3EEE4;
+  --color-dim: #ACA49A;
+  --color-muted: #766F66;
 
-  --color-gold: #D8A85C;
-  --color-gold-soft: #E9C994;
+  --color-fire: #E2572B;
+  --color-fire-soft: #F0824E;
+  --color-gold: #C99A4E;
+  --color-gold-soft: #E0BC7E;
 
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   color-scheme: dark;
-  --nav-h: 72px;
+  --nav-h: 76px;
 }
 
 * { border-color: var(--color-line); }
@@ -44,7 +46,7 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: var(--color-gold); color: #0B0A0C; }
+::selection { background: var(--color-fire); color: #0E0D0C; }
 
 ::-webkit-scrollbar { width: 9px; }
 ::-webkit-scrollbar-track { background: var(--color-ink); }
@@ -54,45 +56,58 @@ body {
   border: 2px solid var(--color-ink);
 }
 
+/* ---------- grain ---------- */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 /* ---------- type ----------
-   A calmer scale than before: fewer sizes, gentler jumps, more air. */
+   League Spartan is all-caps by design intent here: bold, condensed, cinematic. */
 .font-display { font-family: var(--font-display); }
 
 .h-hero {
   font-family: var(--font-display);
-  font-weight: 300;
-  line-height: 1.02;
-  letter-spacing: -0.022em;
-  font-size: clamp(2.7rem, 6.4vw, 5.6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 6.6vw, 5.4rem);
 }
 .h-section {
   font-family: var(--font-display);
-  font-weight: 300;
-  line-height: 1.1;
-  letter-spacing: -0.018em;
-  font-size: clamp(2rem, 3.9vw, 3.3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.008em;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4vw, 3.1rem);
 }
 .h-card {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.012em;
-  font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0;
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
 }
 .eyebrow {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.26em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-fire-soft);
 }
 .lede {
-  font-size: clamp(1.04rem, 1.2vw, 1.18rem);
-  line-height: 1.75;
+  font-size: clamp(1.04rem, 1.2vw, 1.2rem);
+  line-height: 1.7;
   color: var(--color-dim);
 }
 .body-copy {
-  line-height: 1.8;
+  line-height: 1.75;
   color: var(--color-dim);
 }
 

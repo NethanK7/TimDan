@@ -40,8 +40,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="connect" className="relative py-28 sm:py-36">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+    <section id="contact" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-[1180px] px-6 sm:px-10">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           {/* ── left rail ──────────────────────── */}
           <div className="lg:col-span-5">
@@ -76,16 +76,15 @@ export default function Contact() {
             <Reveal delay={0.22}>
               <div className="mt-8 flex flex-wrap gap-2.5">
                 {socials.map((s) => (
-                  <div key={s.label}>
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="inline-block rounded-full border border-line px-5 py-2.5 text-sm text-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
-                    >
-                      {s.label}
-                    </a>
-                  </div>
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-block rounded-full border border-line px-5 py-2.5 text-sm text-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
+                  >
+                    {s.label}
+                  </a>
                 ))}
               </div>
             </Reveal>
@@ -158,7 +157,7 @@ export default function Contact() {
                   <div>
                     <button
                       type="submit"
-                      className="group inline-flex items-center gap-3 rounded-full bg-bone px-8 py-4 text-sm font-medium text-ink transition-colors duration-300 hover:bg-gold"
+                      className="group inline-flex items-center gap-3 rounded-full bg-fire px-8 py-4 text-sm font-semibold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-fire-soft"
                     >
                       Send the invitation
                       <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
