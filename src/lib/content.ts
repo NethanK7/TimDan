@@ -178,7 +178,8 @@ export type Book = {
   status: "available" | "coming-soon";
   featured?: boolean;
   link?: string;
-  spine: string; // cover gradient
+  spine: string; // cover gradient — used as a fallback while `cover` loads, and for titles with no artwork yet
+  cover?: string; // real cover artwork, in public/images/books/
 };
 
 // TODO: confirm release years and purchase links once titles go live
@@ -189,10 +190,22 @@ export const books: Book[] = [
     audience: "Youth",
     year: "—",
     blurb:
-      "A call to awaken faith, deepen spiritual understanding, and carry what God has placed within you — without apology.",
+      "On 2 Kings 4:1-6 — you were not created to be empty. A call to awaken faith, deepen spiritual understanding, and carry what God has placed within you without apology.",
     status: "coming-soon",
     featured: true,
     spine: "linear-gradient(150deg,#F0824E,#E2572B 55%,#7A2410)",
+    cover: "/images/books/built-to-carry-fire.jpg",
+  },
+  {
+    title: "Death Tried, God Decided",
+    subtitle: "The story of Timothy Daniel",
+    audience: "Adults",
+    year: "—",
+    blurb:
+      "Hell had a plan. Heaven had authority. A personal testimony of the night death tried to have the final word — and didn't.",
+    status: "coming-soon",
+    spine: "linear-gradient(150deg,#3C4A5E,#1A212C 58%,#0A0D10)",
+    cover: "/images/books/death-tried-god-decided.jpg",
   },
   {
     title: "Grasshopper or Grapetaster Mentality",
@@ -289,7 +302,7 @@ export const finalCta = {
 
 export const contact = {
   eyebrow: "Contact",
-  heading: "Let's carry the fire together.",
+  heading: "Get in touch.",
   body: "For preaching invitations, conferences, youth events, school programmes, counselling enquiries, media, or partnership with Word & Deed Lanka.",
   reasons: [
     "Speaking / preaching invitation",

@@ -1,44 +1,63 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Book } from "@/lib/content";
 import { Stagger, StaggerItem } from "./ui/Reveal";
 
-function Cover({ book }: { book: Book }) {
+function GradientCover({ book }: { book: Book }) {
   return (
-    <div className="group relative">
+    <div
+      className="relative aspect-[3/4.3] overflow-hidden rounded-sm shadow-[0_28px_70px_-30px_rgba(0,0,0,0.9)]"
+      style={{ background: book.spine }}
+    >
+      {/* spine + gutter shading */}
+      <div className="absolute inset-y-0 left-0 w-[11%] bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
+      <div className="absolute inset-y-0 left-[11%] w-px bg-white/15" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/10 to-white/15" />
+      {/* paper tooth */}
       <div
-        className="relative aspect-[3/4.3] overflow-hidden rounded-sm shadow-[0_28px_70px_-30px_rgba(0,0,0,0.9)]"
-        style={{ background: book.spine }}
-      >
-        {/* spine + gutter shading */}
-        <div className="absolute inset-y-0 left-0 w-[11%] bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-        <div className="absolute inset-y-0 left-[11%] w-px bg-white/15" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/10 to-white/15" />
-        {/* paper tooth */}
-        <div
-          className="absolute inset-0 opacity-[0.13] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          }}
-        />
-        {/* travelling sheen */}
-        <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
+        className="absolute inset-0 opacity-[0.13] mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
+      {/* travelling sheen */}
+      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
 
-        <div className="relative flex h-full flex-col justify-between p-6">
-          <span className="text-[0.6rem] uppercase tracking-[0.26em] text-black/60">
-            {book.audience}
-          </span>
-          <div>
-            <span className="mb-4 block h-px w-10 bg-black/35" />
-            <p className="font-display text-[1.55rem] leading-[1.05] text-black/85">
-              {book.title}
-            </p>
-            <p className="mt-2.5 text-[0.7rem] uppercase tracking-[0.18em] text-black/55">
-              Timothy Daniel
-            </p>
-          </div>
+      <div className="relative flex h-full flex-col justify-between p-6">
+        <span className="text-[0.6rem] uppercase tracking-[0.26em] text-black/60">
+          {book.audience}
+        </span>
+        <div>
+          <span className="mb-4 block h-px w-10 bg-black/35" />
+          <p className="font-display text-[1.55rem] leading-[1.05] text-black/85">{book.title}</p>
+          <p className="mt-2.5 text-[0.7rem] uppercase tracking-[0.18em] text-black/55">
+            Timothy Daniel
+          </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Cover({ book }: { book: Book }) {
+  if (!book.cover) {
+    return (
+      <div className="group relative">
+        <GradientCover book={book} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="group relative aspect-[3/4.3] overflow-hidden rounded-sm shadow-[0_28px_70px_-30px_rgba(0,0,0,0.9)]">
+      <Image
+        src={book.cover}
+        alt={`${book.title} cover`}
+        fill
+        sizes="(max-width: 768px) 46vw, (max-width: 1024px) 30vw, 300px"
+        className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+      />
     </div>
   );
 }
