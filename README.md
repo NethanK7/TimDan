@@ -1,10 +1,10 @@
 # Pastor Timothy Daniel — Official Site
 
-Next.js 16 (App Router) · React 19 · Tailwind v4 · Motion · React Three Fiber · Lenis
+Next.js 16 (App Router) · React 19 · Tailwind v4 · Motion · Lenis
 
-A dark, cinematic one-page site with a WebGL dust field behind the hero, scroll-driven
-reveals throughout, a tabbed **The Work** section (Tim Drops Truth / Books), and a
-**Watch** section that pulls videos live from YouTube.
+A dark, photography-led one-page site: split hero, scroll-driven reveals, a tabbed
+**The Work** section (Tim Drops Truth / Books), a **Listen** feature for the podcast,
+and a **Watch** section that pulls videos live from YouTube.
 
 ---
 
@@ -107,12 +107,20 @@ Vercel auto-detects Next.js — no build config needed.
 
 ---
 
-## Replacing the portrait
+## Replacing the imagery
 
-Drop a new file at `public/images/timothy.jpg`. It is used in the hero, the story section,
-and the social share card. Portrait orientation, ideally 1600px+ on the long edge. If the
-crop looks off, adjust the `object-[58%_22%]` values in `src/components/Hero.tsx` and
-`src/components/About.tsx`.
+Four images drive the design, all in `public/images/`:
+
+| File | Where it appears |
+|---|---|
+| `timothy.jpg` | Hero portrait + social share card |
+| `story.jpg` | About section (the "many callings" collage) |
+| `podcast.jpg` | The Altar Talk feature |
+| `family.jpg` | Home / family section |
+
+Swap any of them in place, keeping the filename. `timothy.jpg` and `story.jpg` are cropped
+with `object-cover` — if a new photo sits badly, adjust the `object-[…]` position in
+`src/components/Hero.tsx` or `src/components/Welcome.tsx`.
 
 ---
 
@@ -123,17 +131,16 @@ src/
   app/
     layout.tsx            fonts, metadata, JSON-LD
     page.tsx              section order
-    globals.css           design tokens + type scale + texture
+    globals.css           design tokens + type scale
     api/youtube/route.ts  JSON endpoint
   lib/
     content.ts            ← all copy
     youtube.ts            YouTube Data API v3
   components/
-    Hero  About  Mission  Work  Videos  Contact  Footer  Nav  Preloader
+    Hero  Welcome  Ministries  Work  Podcast  Videos  Family  Contact  Footer  Nav
     TruthPanel  BooksPanel     ← the two tabs
     VideoGrid                  ← thumbnails + lightbox
-    three/Scene.tsx            ← WebGL dust field
-    ui/                        Reveal  Magnetic  Tilt  Cursor  Marquee  SmoothScroll
+    ui/                        Reveal  SmoothScroll
 ```
 
 ### Design tokens
@@ -141,16 +148,13 @@ src/
 Defined in `globals.css` under `@theme`, so they work as Tailwind classes
 (`text-gold`, `bg-ink`, `border-line`, …):
 
-`ink #07060A` · `surface #131118` · `line #2A2633` · `bone #EFEBE3` ·
-`gold #E0A75E` · `ember #D8763C` · `steel #7F93AE`
+`ink #0B0A0C` · `raise #131217` · `line #26242E` · `bone #F4F1EC` ·
+`dim #A5A0A8` · `muted #6D6874` · `gold #D8A85C`
 
-Display type is Instrument Serif; UI type is Inter.
+Display type is Fraunces (variable, light weights); UI type is Inter.
 
 ### Accessibility & performance
 
-- Everything respects `prefers-reduced-motion` — the preloader, smooth scroll, and CSS
-  animations all switch off
-- The WebGL field drops its particle count on smaller viewports and is `pointer-events: none`
-- The custom cursor and magnetic buttons only activate on `pointer: fine` devices
+- Everything respects `prefers-reduced-motion` — smooth scroll and CSS animations switch off
 - Tabs are wired with `role="tablist"` / `aria-selected` / `aria-controls`; the lightbox
   traps Escape and restores scroll

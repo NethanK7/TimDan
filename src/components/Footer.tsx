@@ -4,27 +4,22 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-line/70 pt-20">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="grid gap-12 pb-16 lg:grid-cols-12">
+    <footer className="border-t border-line">
+      <div className="mx-auto max-w-[1180px] px-6 py-16 sm:px-10">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="font-display text-3xl">
-              Timothy <span className="text-bone-dim">Daniel</span>
+            <p className="font-display text-2xl">
+              Timothy <span className="text-muted">Daniel</span>
             </p>
-            <p className="mt-4 max-w-[36ch] text-sm leading-relaxed text-muted">
-              {site.tagline}
-            </p>
+            <p className="mt-4 max-w-[34ch] text-sm leading-relaxed text-muted">{site.tagline}</p>
           </div>
 
           <div className="lg:col-span-3">
-            <p className="mb-5 text-[0.65rem] uppercase tracking-[0.22em] text-muted">Explore</p>
+            <p className="mb-5 text-[0.68rem] uppercase tracking-[0.2em] text-muted">Explore</p>
             <ul className="space-y-2.5">
               {nav.map((n) => (
                 <li key={n.href}>
-                  <a
-                    href={n.href}
-                    className="text-sm text-bone-dim transition-colors hover:text-gold"
-                  >
+                  <a href={n.href} className="text-sm text-dim transition-colors hover:text-gold">
                     {n.label}
                   </a>
                 </li>
@@ -33,7 +28,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <p className="mb-5 text-[0.65rem] uppercase tracking-[0.22em] text-muted">Elsewhere</p>
+            <p className="mb-5 text-[0.68rem] uppercase tracking-[0.2em] text-muted">Elsewhere</p>
             <ul className="space-y-2.5">
               {socials.map((s) => (
                 <li key={s.label}>
@@ -41,7 +36,7 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="text-sm text-bone-dim transition-colors hover:text-gold"
+                    className="text-sm text-dim transition-colors hover:text-gold"
                   >
                     {s.label}
                   </a>
@@ -51,28 +46,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-line/70 py-7 text-[0.72rem] text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-2 border-t border-line pt-7 text-[0.72rem] text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {year} Timothy Daniel. The Father&rsquo;s House Church &middot; Kingdom Kidz
-            &middot; Word &amp; Deed Lanka.
+            &copy; {year} Timothy Daniel &middot; The Father&rsquo;s House Church &middot; Kingdom
+            Kidz &middot; Word &amp; Deed Lanka
           </p>
           <p>{site.location}</p>
         </div>
-      </div>
-
-      {/* oversized wordmark, faded rather than hard-clipped at the page edge */}
-      <div
-        aria-hidden
-        className="pointer-events-none select-none overflow-hidden pt-6 pb-2"
-        style={{
-          maskImage: "linear-gradient(to bottom, transparent, black 35%, black 75%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent, black 35%, black 75%, transparent)",
-        }}
-      >
-        <p className="font-display whitespace-nowrap text-center text-[19vw] leading-[0.82] tracking-tight text-bone/[0.07]">
-          Timothy Daniel
-        </p>
       </div>
     </footer>
   );

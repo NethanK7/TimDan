@@ -4,10 +4,9 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { contact, site, socials } from "@/lib/content";
 import { Reveal, RevealWords } from "./ui/Reveal";
-import Magnetic from "./ui/Magnetic";
 
 const FIELD =
-  "w-full rounded-sm border border-line bg-surface/40 px-5 py-4 text-[0.95rem] text-bone placeholder:text-muted outline-none transition-colors duration-300 focus:border-gold/60";
+  "w-full rounded-lg border border-line bg-raise/40 px-5 py-4 text-[0.95rem] text-bone placeholder:text-muted outline-none transition-colors duration-300 focus:border-gold/60";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -49,7 +48,7 @@ export default function Contact() {
             <Reveal>
               <p className="eyebrow mb-6">{contact.eyebrow}</p>
             </Reveal>
-            <h2 className="display-lg mb-7 max-w-[11ch]">
+            <h2 className="h-section mb-7 max-w-[11ch]">
               <RevealWords text={contact.heading} />
             </h2>
             <Reveal delay={0.1}>
@@ -57,7 +56,7 @@ export default function Contact() {
             </Reveal>
 
             <Reveal delay={0.16}>
-              <div className="space-y-px overflow-hidden rounded-sm border border-line bg-line">
+              <div className="space-y-px overflow-hidden rounded-lg border border-line bg-line">
                 <div className="bg-ink px-6 py-5">
                   <p className="text-[0.65rem] uppercase tracking-[0.22em] text-muted">Email</p>
                   <a
@@ -77,16 +76,16 @@ export default function Contact() {
             <Reveal delay={0.22}>
               <div className="mt-8 flex flex-wrap gap-2.5">
                 {socials.map((s) => (
-                  <Magnetic key={s.label}>
+                  <div key={s.label}>
                     <a
                       href={s.href}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="inline-block rounded-full border border-line px-5 py-2.5 text-sm text-bone-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
+                      className="inline-block rounded-full border border-line px-5 py-2.5 text-sm text-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
                     >
                       {s.label}
                     </a>
-                  </Magnetic>
+                  </div>
                 ))}
               </div>
             </Reveal>
@@ -156,7 +155,7 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-2 flex flex-wrap items-center gap-5 sm:col-span-2">
-                  <Magnetic>
+                  <div>
                     <button
                       type="submit"
                       className="group inline-flex items-center gap-3 rounded-full bg-bone px-8 py-4 text-sm font-medium text-ink transition-colors duration-300 hover:bg-gold"
@@ -166,7 +165,7 @@ export default function Contact() {
                         &rarr;
                       </span>
                     </button>
-                  </Magnetic>
+                  </div>
 
                   {sent && (
                     <motion.p

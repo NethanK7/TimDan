@@ -47,14 +47,14 @@ export default function Work({ shorts }: { shorts: VideosPayload }) {
                 >
                   <span
                     className={`block text-[0.62rem] uppercase tracking-[0.24em] transition-colors duration-500 ${
-                      active ? "text-gold" : "text-muted group-hover:text-bone-dim"
+                      active ? "text-gold" : "text-muted group-hover:text-dim"
                     }`}
                   >
                     {t.meta}
                   </span>
                   <span
                     className={`mt-2 block font-display text-[clamp(1.6rem,3.4vw,2.6rem)] leading-none tracking-tight transition-colors duration-500 ${
-                      active ? "text-bone" : "text-muted group-hover:text-bone-dim"
+                      active ? "text-bone" : "text-muted group-hover:text-dim"
                     }`}
                   >
                     {t.label}

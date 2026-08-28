@@ -19,17 +19,36 @@ export const site = {
 };
 
 export const nav = [
-  { label: "Story", href: "#story" },
-  { label: "Mission", href: "#mission" },
+  { label: "About", href: "#about" },
+  { label: "Ministries", href: "#ministries" },
   { label: "The Work", href: "#work" },
-  { label: "Watch", href: "#watch" },
+  { label: "Listen", href: "#listen" },
   { label: "Connect", href: "#connect" },
 ];
 
 export const hero = {
-  kicker: "Youth & Young Adults Pastor · The Father's House, Colombo",
-  lines: ["Reveal", "the Father's", "Heart"],
-  sub: "Preacher. Humanitarian. Author. Counsellor. Helping a generation discover identity, find healing, and carry the presence of God.",
+  kicker: "Colombo, Sri Lanka",
+  title: "Revealing the heart of the Father.",
+  sub: "Pastor, humanitarian and author helping a generation discover who they are, find healing, and walk in the purpose God gave them.",
+  primaryCta: { label: "Invite Timothy to speak", href: "#connect" },
+  secondaryCta: { label: "Watch a message", href: "#watch" },
+};
+
+export const welcome = {
+  eyebrow: "Hello there",
+  heading: "One man. Many callings.",
+  body: [
+    "I'm Timothy — a preacher, humanitarian, author and counsellor based in Colombo. I serve as the Youth and Young Adults Pastor at The Father's House Church, where I also oversee our Children's and Media ministries.",
+    "Most weeks look like this: preaching on a Sunday, sitting with a young person who is struggling on a Monday, loading a van for a village outreach midweek, and writing late at night. Different rooms, one mission.",
+  ],
+  roles: [
+    "Preacher",
+    "Humanitarian",
+    "Author",
+    "Counsellor",
+    "Podcast host",
+    "Creative communicator",
+  ],
   stats: [
     { value: "1000s", label: "Lives reached" },
     { value: "3", label: "Organisations led" },
@@ -37,48 +56,30 @@ export const hero = {
   ],
 };
 
-export const about = {
-  eyebrow: "The Story",
-  heading: "Faith that becomes visible.",
-  body: [
-    "Pastor Timothy Daniel is a preacher, humanitarian, author, counsellor, and creative communicator with a deep passion for helping people discover their identity, experience inner healing, and fulfil their God-given purpose.",
-    "He serves as the Youth and Young Adults Pastor at The Father's House Church in Colombo, Sri Lanka, where he also oversees the Children's Ministry and Media Ministry. With a heart for the next generation, Timothy communicates biblical truth in a relevant, practical, and thought-provoking way — addressing real-life issues such as identity, purpose, holiness, emotional healing, mental health, relationships, and spiritual growth.",
-    "As an author and storyteller, Timothy creates resources that make biblical truth accessible to both children and adults. His work reflects his conviction that faith must move beyond words and become visible through compassion, courage, and action.",
-    "Timothy lives in Colombo with his wife, Viji, and their children. Together, they remain committed to serving God, strengthening families, and demonstrating the love of Jesus in both word and deed.",
-  ],
-  pull: "Whether preaching from a platform, counselling a young person, serving a forgotten community, writing a book, or creating digital content, Timothy carries one central mission.",
+export const family = {
+  eyebrow: "Home",
+  heading: "Ministry begins at the kitchen table.",
+  body: "Timothy lives in Colombo with his wife, Viji, and their children. Viji serves alongside him in every part of the work — from village outreaches to the quiet, unglamorous hours that hold a ministry together. Together they remain committed to serving God, strengthening families, and demonstrating the love of Jesus in both word and deed.",
+  caption: "Timothy & Viji",
 };
-
-export const roles = [
-  "Preacher",
-  "Humanitarian",
-  "Author",
-  "Counsellor",
-  "Creative Communicator",
-  "Podcast Host",
-];
 
 export const mission = {
   eyebrow: "The Mission",
-  heading: "One central mission, four movements.",
+  heading: "What the work is really for.",
   pillars: [
     {
-      no: "01",
       title: "Reveal the heart of the Father",
       body: "Preaching that moves past religion and introduces people to a Father who is not distant, disappointed, or done with them.",
     },
     {
-      no: "02",
       title: "Awaken purpose",
       body: "Helping young people trade borrowed identity for God-given calling — clarity about who they are before what they do.",
     },
     {
-      no: "03",
       title: "Restore broken lives",
       body: "Counselling and teaching around inner healing, mental health, emotional wholeness, holiness, and relationships.",
     },
     {
-      no: "04",
       title: "Prepare a generation",
       body: "Raising leaders who carry the presence of God into schools, estates, villages, and every space they walk into.",
     },
@@ -92,7 +93,6 @@ export const ministries = [
     blurb:
       "Leading the youth and young adults ministry in Colombo, while overseeing the Children's Ministry and the Media Ministry.",
     tags: ["Youth", "Children", "Media"],
-    accent: "gold" as const,
   },
   {
     name: "Kingdom Kidz",
@@ -100,7 +100,6 @@ export const ministries = [
     blurb:
       "Creating resources, programmes, and experiences that make biblical truth accessible, memorable, and joyful for children.",
     tags: ["Children", "Resources", "Discipleship"],
-    accent: "ember" as const,
   },
   {
     name: "Word & Deed Lanka",
@@ -108,7 +107,6 @@ export const ministries = [
     blurb:
       "A humanitarian organisation serving vulnerable children, families, and underserved communities across Sri Lanka — alongside his wife Viji and a dedicated team of volunteers.",
     tags: ["Relief", "Outreach", "Training"],
-    accent: "steel" as const,
   },
 ];
 

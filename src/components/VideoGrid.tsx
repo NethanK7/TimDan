@@ -38,7 +38,7 @@ function PlayBadge({ big = false }: { big?: boolean }) {
 function Thumb({ video, featured }: { video: Video; featured?: boolean }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-sm border border-line/70 bg-surface ${
+      className={`relative overflow-hidden rounded-lg border border-line/70 bg-raise ${
         featured ? "aspect-[16/9]" : "aspect-video"
       }`}
     >
@@ -51,7 +51,7 @@ function Thumb({ video, featured }: { video: Video; featured?: boolean }) {
           className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
         />
       ) : (
-        <div className="absolute inset-0 bg-surface-2" />
+        <div className="absolute inset-0 bg-raise-2" />
       )}
 
       <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
@@ -104,8 +104,8 @@ export default function VideoGrid({
           </div>
           <div className="lg:col-span-4">
             <p className="eyebrow mb-4">Latest</p>
-            <h3 className="display-md mb-4 line-clamp-3">{featured.title}</h3>
-            <p className="mb-5 line-clamp-3 text-[0.93rem] leading-[1.7] text-bone-dim">
+            <h3 className="h-card mb-4 line-clamp-3">{featured.title}</h3>
+            <p className="mb-5 line-clamp-3 text-[0.93rem] leading-[1.7] text-dim">
               {featured.description}
             </p>
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-muted">
@@ -140,7 +140,7 @@ export default function VideoGrid({
             href={channelUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="group inline-flex items-center gap-3 rounded-full border border-line px-7 py-3.5 text-sm text-bone-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
+            className="group inline-flex items-center gap-3 rounded-full border border-line px-7 py-3.5 text-sm text-dim transition-colors duration-300 hover:border-gold/50 hover:text-gold"
           >
             View the full channel
             <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
@@ -167,7 +167,7 @@ export default function VideoGrid({
             <button
               onClick={close}
               aria-label="Close video"
-              className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-line text-bone-dim transition-colors hover:border-gold/60 hover:text-gold sm:right-8 sm:top-8"
+              className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-line text-dim transition-colors hover:border-gold/60 hover:text-gold sm:right-8 sm:top-8"
             >
               <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden>
                 <path d="M1 1 L12 12 M12 1 L1 12" stroke="currentColor" fill="none" />
@@ -182,7 +182,7 @@ export default function VideoGrid({
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-5xl"
             >
-              <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-line bg-black">
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-line bg-black">
                 <iframe
                   key={active.id}
                   src={`https://www.youtube-nocookie.com/embed/${active.id}?autoplay=1&rel=0&modestbranding=1`}

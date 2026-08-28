@@ -2,15 +2,14 @@
 
 import { books, booksIntro } from "@/lib/content";
 import { Stagger, StaggerItem } from "./ui/Reveal";
-import Tilt from "./ui/Tilt";
 
 export default function BooksPanel() {
   return (
     <div>
       <div className="mb-14 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <h3 className="display-lg mb-6 max-w-[13ch]">
-            Truth you can <span className="gold-text">hold.</span>
+          <h3 className="h-section mb-6 max-w-[13ch]">
+            Truth you can <span className="text-gold-soft">hold.</span>
           </h3>
           <p className="lede max-w-[54ch]">{booksIntro.body}</p>
         </div>
@@ -27,7 +26,7 @@ export default function BooksPanel() {
         {books.map((book) => (
           <StaggerItem key={`${book.title}-${book.audience}`}>
             <article className="group h-full">
-              <Tilt className="relative">
+              <div className="relative">
                 {/* cover */}
                 <div
                   className="relative aspect-[3/4.3] overflow-hidden rounded-sm shadow-[0_28px_70px_-30px_rgba(0,0,0,0.9)]"
@@ -65,7 +64,7 @@ export default function BooksPanel() {
                     </div>
                   </div>
                 </div>
-              </Tilt>
+              </div>
 
               <div className="mt-6">
                 <div className="mb-3 flex items-center gap-3">
@@ -82,7 +81,7 @@ export default function BooksPanel() {
                 </div>
 
                 <h4 className="font-display text-xl">{book.subtitle}</h4>
-                <p className="mt-3 text-[0.92rem] leading-[1.72] text-bone-dim">{book.blurb}</p>
+                <p className="mt-3 text-[0.92rem] leading-[1.72] text-dim">{book.blurb}</p>
 
                 {book.status === "available" && book.link ? (
                   <a
@@ -99,7 +98,7 @@ export default function BooksPanel() {
                 ) : (
                   <a
                     href="#connect"
-                    className="group/link mt-5 inline-flex items-center gap-2 text-sm text-bone-dim transition-colors hover:text-gold"
+                    className="group/link mt-5 inline-flex items-center gap-2 text-sm text-dim transition-colors hover:text-gold"
                   >
                     Get notified
                     <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/link:translate-x-1">

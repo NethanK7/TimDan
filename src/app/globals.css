@@ -1,30 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #07060A;
-  --color-ink-2: #0C0B11;
-  --color-surface: #131118;
-  --color-surface-2: #1B1822;
-  --color-line: #2A2633;
+  /* Warm near-black rather than pure black — softer, less clinical */
+  --color-ink: #0B0A0C;
+  --color-raise: #131217;
+  --color-raise-2: #1B1A21;
+  --color-line: #26242E;
+  --color-line-soft: #1C1B22;
 
-  --color-bone: #EFEBE3;
-  --color-bone-dim: #A9A29A;
-  --color-muted: #6F6A75;
+  --color-bone: #F4F1EC;
+  --color-dim: #A5A0A8;
+  --color-muted: #6D6874;
 
-  --color-gold: #E0A75E;
-  --color-gold-deep: #B8813C;
-  --color-ember: #D8763C;
-  --color-steel: #7F93AE;
+  --color-gold: #D8A85C;
+  --color-gold-soft: #E9C994;
 
-  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
   color-scheme: dark;
-  --nav-h: 76px;
+  --nav-h: 72px;
 }
 
 * { border-color: var(--color-line); }
@@ -35,7 +32,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Lenis drives scroll; native smooth would fight it */
+/* Lenis owns scroll; native smooth would fight it */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
@@ -47,115 +44,62 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: var(--color-gold); color: #0A0810; }
+::selection { background: var(--color-gold); color: #0B0A0C; }
 
-/* ---------- scrollbar ---------- */
-::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar { width: 9px; }
 ::-webkit-scrollbar-track { background: var(--color-ink); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface-2);
+  background: var(--color-raise-2);
   border-radius: 99px;
   border: 2px solid var(--color-ink);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-gold-deep); }
 
-/* ---------- type utilities ---------- */
+/* ---------- type ----------
+   A calmer scale than before: fewer sizes, gentler jumps, more air. */
 .font-display { font-family: var(--font-display); }
 
-.display-xl {
+.h-hero {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 0.88;
-  letter-spacing: -0.03em;
-  font-size: clamp(3.1rem, 11vw, 10.5rem);
-}
-.display-lg {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.025em;
-  font-size: clamp(2.4rem, 6.2vw, 5.4rem);
-}
-.display-md {
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.02;
-  letter-spacing: -0.02em;
-  font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  letter-spacing: -0.022em;
+  font-size: clamp(2.7rem, 6.4vw, 5.6rem);
+}
+.h-section {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.018em;
+  font-size: clamp(2rem, 3.9vw, 3.3rem);
+}
+.h-card {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem);
 }
 .eyebrow {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--color-gold);
 }
 .lede {
-  font-size: clamp(1.02rem, 1.35vw, 1.28rem);
-  line-height: 1.68;
-  color: var(--color-bone-dim);
+  font-size: clamp(1.04rem, 1.2vw, 1.18rem);
+  line-height: 1.75;
+  color: var(--color-dim);
+}
+.body-copy {
+  line-height: 1.8;
+  color: var(--color-dim);
 }
 
-.gold-text {
-  background: linear-gradient(96deg, #F6D9A8 0%, var(--color-gold) 42%, var(--color-gold-deep) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* ---------- texture ---------- */
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: -50%;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain 7s steps(6) infinite;
-}
-@keyframes grain {
-  0%,100% { transform: translate(0,0) }
-  17% { transform: translate(-3%, 2%) }
-  34% { transform: translate(2%, -3%) }
-  51% { transform: translate(-2%, -2%) }
-  68% { transform: translate(3%, 1%) }
-  85% { transform: translate(-1%, 3%) }
-}
-
-.hairline {
-  background: linear-gradient(90deg, transparent, var(--color-line) 12%, var(--color-line) 88%, transparent);
+.rule {
   height: 1px;
+  background: var(--color-line);
 }
-
-.glass {
-  background: color-mix(in oklab, var(--color-ink) 86%, transparent);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
-}
-
-/* Fade a portrait into the page background */
-.portrait-mask {
-  -webkit-mask-image: radial-gradient(78% 66% at 52% 40%, #000 52%, transparent 100%);
-  mask-image: radial-gradient(78% 66% at 52% 40%, #000 52%, transparent 100%);
-}
-
-.marquee-track {
-  animation: marquee 42s linear infinite;
-  will-change: transform;
-}
-.marquee-host:hover .marquee-track { animation-play-state: paused; }
-@keyframes marquee {
-  from { transform: translate3d(0,0,0) }
-  to   { transform: translate3d(-50%,0,0) }
-}
-
-@keyframes pulse-ring {
-  0%   { transform: scale(0.92); opacity: 0.7 }
-  70%  { transform: scale(1.5);  opacity: 0 }
-  100% { transform: scale(1.5);  opacity: 0 }
-}
-.pulse-ring { animation: pulse-ring 2.6s var(--ease-out-expo) infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -163,5 +107,4 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .grain::after { animation: none; }
 }
